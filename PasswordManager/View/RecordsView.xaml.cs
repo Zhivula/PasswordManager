@@ -1,5 +1,4 @@
-﻿using PasswordManager.View;
-using PasswordManager.ViewModel;
+﻿using PasswordManager.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,22 +14,17 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace PasswordManager
+namespace PasswordManager.View
 {
     /// <summary>
-    /// Логика взаимодействия для MainWindow.xaml
+    /// Логика взаимодействия для RecordsView.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class RecordsView : UserControl
     {
-        public MainWindow()
+        public RecordsView()
         {
             InitializeComponent();
-            DataContext = new MainWindowViewModel();
-            ChangedGrid.Children.Add(new RecordsView());
-        }
-        private void OnMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
-        {
-            DragMove();
+            DataContext = new RecordsViewModel();
         }
     }
 }

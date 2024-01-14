@@ -5,6 +5,8 @@
     
     <FontFamily x:Key="BaseFont">Consolas</FontFamily>
     <FontFamily x:Key="MenuFont">Segoe UI</FontFamily>
+    
+    
     <system:Double x:Key="Smal">14</system:Double>
     <system:Double x:Key="Regular">16</system:Double>
     <system:Double x:Key="Big">20</system:Double>

@@ -7,71 +7,132 @@
         xmlns:local="clr-namespace:PasswordManager"
         mc:Ignorable="d"
         Title="PasswordManager. Vladislav Zhivula" 
-        Height="700"
+        Height="500"
         Width="1000"         
         WindowStyle="None"
         ResizeMode="CanResize"
         Background="Transparent"
         AllowsTransparency="True"
         WindowStartupLocation="CenterScreen">
-    <Border CornerRadius="20">
+    <Border CornerRadius="10" Background="Transparent">
         <Grid>
+            <Grid.Background>
+                <LinearGradientBrush StartPoint="0,1" EndPoint="0,0">
+                    <GradientStopCollection>
+                        <GradientStop Offset="0" Color="#240935"/>
+                        <GradientStop Offset="1" Color="#20155E"/>
+                    </GradientStopCollection>
+                </LinearGradientBrush>
+            </Grid.Background>
             <Grid.RowDefinitions>
                 <RowDefinition Height="50"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="300"/>
+                <ColumnDefinition Width="200"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
             <Grid Grid.Row="0" Grid.Column="1" MouseDown="OnMouseLeftButtonDown">
-                <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
-                    <Button Margin="0 5 5 0" Background="Transparent" Command="{Binding CloseWindow}">
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                    <Button Style="{DynamicResource ADD_Button}" Command="{Binding Add}">
                         <Button.RenderTransform>
-                            <RotateTransform Angle="0" CenterX="20" CenterY="20"/>
+                            <ScaleTransform ScaleX="1" ScaleY="1" CenterX="20" CenterY="20"/>
                         </Button.RenderTransform>
-                        <materialDesign:PackIcon Kind="WindowMinimize" Foreground="White" Height="30" Width="30"/>
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon Kind="Plus" Foreground="White" Height="25" Width="25"/>
+                            <TextBlock Text="ADD" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="White" FontWeight="Bold" FontSize="16"/>
+                        </StackPanel>
                     </Button>
-                    <Button Margin="0 5 5 0" Background="Transparent" Command="{Binding CloseWindow}">
+                </StackPanel>
+                <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
+                    <Button Style="{DynamicResource MainWindowCloseButton}" Command="{Binding WindowMinimize}">
                         <Button.RenderTransform>
                             <RotateTransform Angle="0" CenterX="20" CenterY="20"/>
                         </Button.RenderTransform>
-                        <materialDesign:PackIcon Kind="WindowClose" Foreground="White" Height="30" Width="30"/>
+                        <materialDesign:PackIcon Kind="WindowMinimize" Foreground="White" Height="25" Width="25"/>
+                    </Button>
+                    <Button Style="{DynamicResource MainWindowCloseButton}" Command="{Binding WindowMaximize}">
+                        <Button.RenderTransform>
+                            <RotateTransform Angle="0" CenterX="20" CenterY="20"/>
+                        </Button.RenderTransform>
+                        <materialDesign:PackIcon Kind="WindowMaximize" Foreground="White" Height="25" Width="25"/>
+                    </Button>
+                    <Button Style="{DynamicResource MainWindowCloseButton}" Command="{Binding WindowClose}">
+                        <Button.RenderTransform>
+                            <RotateTransform Angle="0" CenterX="17" CenterY="17"/>
+                        </Button.RenderTransform>
+                        <materialDesign:PackIcon Kind="WindowClose" Foreground="White" Height="25" Width="25"/>
                     </Button>
                 </StackPanel>
             </Grid>
-            <Grid Grid.RowSpan="2" Grid.Column="0">
+            <Grid Grid.RowSpan="2" Grid.Column="0" Background="#310062">
                 <StackPanel>
-                    <Button Margin="0 5 5 0" Background="Transparent" Command="{Binding CloseWindow}">
-                        <Button.RenderTransform>
-                            <RotateTransform Angle="0" CenterX="20" CenterY="20"/>
-                        </Button.RenderTransform>
-                        <materialDesign:PackIcon Kind="Key" Foreground="White" Height="30" Width="30"/>
-                    </Button>
-                    <Button Margin="0 5 5 0" Background="Transparent" Command="{Binding CloseWindow}">
-                        <Button.RenderTransform>
-                            <RotateTransform Angle="0" CenterX="20" CenterY="20"/>
-                        </Button.RenderTransform>
-                        <materialDesign:PackIcon Kind="Key" Foreground="White" Height="30" Width="30"/>
-                    </Button>
-                    <Button Margin="0 5 5 0" Background="Transparent" Command="{Binding CloseWindow}">
-                        <Button.RenderTransform>
-                            <RotateTransform Angle="0" CenterX="20" CenterY="20"/>
-                        </Button.RenderTransform>
-                        <materialDesign:PackIcon Kind="Key" Foreground="White" Height="30" Width="30"/>
-                    </Button>
-                    <Button Margin="0 5 5 0" Background="Transparent" Command="{Binding CloseWindow}">
-                        <Button.RenderTransform>
-                            <RotateTransform Angle="0" CenterX="20" CenterY="20"/>
-                        </Button.RenderTransform>
-                        <materialDesign:PackIcon Kind="Key" Foreground="White" Height="30" Width="30"/>
-                    </Button>
-                    <Button Margin="0 5 5 0" Background="Transparent" Command="{Binding CloseWindow}">
-                        <Button.RenderTransform>
-                            <RotateTransform Angle="0" CenterX="20" CenterY="20"/>
-                        </Button.RenderTransform>
-                        <materialDesign:PackIcon Kind="Key" Foreground="White" Height="30" Width="30"/>
-                    </Button>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0 10 0 20">
+                        <StackPanel VerticalAlignment="Center">
+                            <StackPanel.RenderTransform>
+                                <TransformGroup>
+                                    <RotateTransform Angle="135"/>
+                                    <TranslateTransform X="30" Y="20"/>
+                                </TransformGroup>
+                            </StackPanel.RenderTransform>
+                            <materialDesign:PackIcon Kind="Key" Foreground="{DynamicResource BrightTurquoiseBrush}" Height="35" Width="35"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="M" Style="{DynamicResource Menu}" Margin="0 0 0 0" FontSize="47" VerticalAlignment="Center" FontWeight="Bold">
+                                <TextBlock.Foreground>
+                                    <LinearGradientBrush>
+                                        <GradientStop Color="#FF00FF" Offset="0.0" />
+                                        <GradientStop Color="#FC0FC0" Offset="0.5" />
+                                        <GradientStop Color="#D71868" Offset="1.0" />
+                                    </LinearGradientBrush>
+                                </TextBlock.Foreground>
+                            </TextBlock>
+                            <StackPanel VerticalAlignment="Center" Margin="0 0 0 0">
+                                <TextBlock Margin="2 -2 0 2" Text="PASSWORD" Foreground="{DynamicResource BrightTurquoiseBrush}" FontWeight="UltraLight" FontSize="15" VerticalAlignment="Top"/>
+                                <Grid Height="20" Margin="0 -5 0 0" VerticalAlignment="Top">
+                                    <TextBlock.Foreground>
+                                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                                            <GradientStop Color="#FF00FF" Offset="0.0" />
+                                            <GradientStop Color="#FC0FC0" Offset="0.5" />
+                                            <GradientStop Color="#D71868" Offset="1.0" />
+                                        </LinearGradientBrush>
+                                    </TextBlock.Foreground>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <TextBlock Grid.Column="0" Text="A" FontWeight="Bold" FontSize="17" VerticalAlignment="Top" HorizontalAlignment="Center"/>
+                                    <TextBlock Grid.Column="1" Text="N" FontWeight="Bold" FontSize="17" VerticalAlignment="Top" HorizontalAlignment="Center"/>
+                                    <TextBlock Grid.Column="2" Text="A" FontWeight="Bold" FontSize="17" VerticalAlignment="Top" HorizontalAlignment="Center"/>
+                                    <TextBlock Grid.Column="3" Text="G" FontWeight="Bold" FontSize="17" VerticalAlignment="Top" HorizontalAlignment="Center"/>
+                                    <TextBlock Grid.Column="4" Text="E" FontWeight="Bold" FontSize="17" VerticalAlignment="Top" HorizontalAlignment="Center"/>
+                                    <TextBlock Grid.Column="5" Text="R" FontWeight="Bold" FontSize="17" VerticalAlignment="Top" HorizontalAlignment="Center"/>
+                                </Grid>
+                            </StackPanel>
+                        </StackPanel>
+                    </StackPanel>
+                    <RadioButton Style="{DynamicResource MenuButton}" Command="{Binding AccountsCommand}">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="ACCOUNTS" Style="{DynamicResource Menu}"/>
+                            <materialDesign:PackIcon Name="md_first" Kind="Account" Foreground="{DynamicResource LightBrightTurquoiseBrush}" Height="25" Width="25" VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </RadioButton>
+                    <RadioButton Style="{DynamicResource MenuButton}" Command="{Binding CardsCommand}">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="CARDS" Style="{DynamicResource Menu}"/>
+                            <materialDesign:PackIcon Kind="Card" Foreground="{DynamicResource LightBrightTurquoiseBrush}" Height="{Binding ElementName=md_first, Path=Height}" Width="{Binding ElementName=md_first, Path=Width}" VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </RadioButton>
+                    <RadioButton Style="{DynamicResource MenuButton}" Command="{Binding MailCommand}">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="MAIL" Style="{DynamicResource Menu}"/>
+                            <materialDesign:PackIcon Kind="Gmail" Foreground="{DynamicResource LightBrightTurquoiseBrush}" Height="{Binding ElementName=md_first, Path=Height}" Width="{Binding ElementName=md_first, Path=Width}" VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </RadioButton>
                 </StackPanel>
             </Grid>
             <Grid Grid.Row="1" Grid.Column="1" x:Name="ChangedGrid">
