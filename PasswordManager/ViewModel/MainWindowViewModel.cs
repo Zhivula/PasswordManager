@@ -13,6 +13,7 @@ namespace PasswordManager.ViewModel
 {
     class MainWindowViewModel : INotifyPropertyChanged
     {
+
         readonly MainWindow window = Application.Current.Windows.OfType<MainWindow>().FirstOrDefault();
 
         public MainWindowViewModel()
