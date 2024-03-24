@@ -10,6 +10,14 @@ namespace PasswordManager.Data
 {
     public class SHA256
     {
+        public static string passPhrase = "TestPassphrase";      //Может быть любой строкой
+        public static string saltValue = "TestSaltValue";        // Может быть любой строкой
+        public static string hashAlgorithm = "SHA256";           // может быть "MD5"
+        public static int passwordIterations = 10;               //Может быть любым числом
+        public static string initVector = "5B19443818A7FFAA";    // Должно быть 16 байт
+        public static int keySize = 256;                         // Может быть 192 или 128
+        public static string plainText = "HELLO123456HELLO123456";
+
         public static string Encrypt(string plainText, string passPhrase, string saltValue, string hashAlgorithm, int passwordIterations, string initVector, int keySize)
         {
             //Преобразование строк в байтовые массивы.

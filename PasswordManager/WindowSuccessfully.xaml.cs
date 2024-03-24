@@ -1,5 +1,4 @@
-﻿using PasswordManager.ViewModel;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,20 +10,22 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace PasswordManager.View
+namespace PasswordManager
 {
     /// <summary>
-    /// Логика взаимодействия для RecordsView.xaml
+    /// Логика взаимодействия для WindowSuccessfully.xaml
     /// </summary>
-    public partial class RecordsView : UserControl
+    public partial class WindowSuccessfully : Window
     {
-        public RecordsView(string key)
+        public WindowSuccessfully()
         {
             InitializeComponent();
-            DataContext = new RecordsViewModel(key);
+        }
+        public void ClosedThisWindow(object sender, EventArgs e)
+        {
+            Close();
         }
     }
 }

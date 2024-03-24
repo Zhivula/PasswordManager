@@ -4,21 +4,49 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PasswordManager"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
-        Title="StartAppView" Height="450" Width="800" WindowStyle="None" Background="Transparent">
-    <Border CornerRadius="20" Background="White">
-        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Width="500">
-            <Label Content="Password" Foreground="{DynamicResource LightBrightTurquoiseBrush}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-            <TextBox Text="{Binding Password, UpdateSourceTrigger=PropertyChanged}" FontSize="16" Padding="3 0 0 0" Height="26" Foreground="White">
-                <TextBox.Template>
-                    <ControlTemplate>
-                        <Border CornerRadius="5"  BorderThickness="1" BorderBrush="#FF468AFF" Background="Transparent">
-                            <ScrollViewer Margin="0" x:Name="PART_ContentHost" />
-                        </Border>
-                    </ControlTemplate>
-                </TextBox.Template>
-            </TextBox>
-        </StackPanel>
-
+        Title="StartAppView" Height="450" Width="800" WindowStyle="None" ResizeMode="NoResize" Background="Transparent" WindowStartupLocation="CenterScreen">
+    <Border CornerRadius="20">
+        <Border.Background>
+            <LinearGradientBrush StartPoint="0,1" EndPoint="0,0">
+                <GradientStopCollection>
+                    <GradientStop Offset="0" Color="#240935"/>
+                    <GradientStop Offset="1" Color="#20155E"/>
+                </GradientStopCollection>
+            </LinearGradientBrush>
+        </Border.Background>
+        <Grid>
+            <StackPanel HorizontalAlignment="Right" VerticalAlignment="Top" Orientation="Horizontal">
+                <Button Style="{DynamicResource MainWindowCloseButton}" Command="{Binding WindowMinimize}">
+                    <materialDesign:PackIcon Kind="WindowMinimize" Foreground="White" Height="25" Width="25"/>
+                </Button>
+                <Button Style="{DynamicResource MainWindowCloseButton}" Command="{Binding WindowClose}">
+                    <materialDesign:PackIcon Kind="WindowClose" Foreground="White" Height="25" Width="25"/>
+                </Button>
+            </StackPanel>
+            <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Width="500" >
+                <Label Content="Password" Foreground="{DynamicResource LightBrightTurquoiseBrush}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <TextBox Text="{Binding Password, UpdateSourceTrigger=PropertyChanged}" FontSize="16" Padding="3 0 0 0" Height="26" Foreground="White">
+                    <TextBox.Template>
+                        <ControlTemplate>
+                            <Border CornerRadius="5"  BorderThickness="1" BorderBrush="#FF468AFF" Background="Transparent">
+                                <ScrollViewer Margin="0" x:Name="PART_ContentHost" />
+                            </Border>
+                        </ControlTemplate>
+                    </TextBox.Template>
+                </TextBox>
+                <Button Background="Transparent" Command="{Binding Save}" HorizontalAlignment="Right" BorderThickness="0" Margin="0 -25 -30 0">
+                    <materialDesign:PackIcon Kind="Eye" Foreground="White" Height="25" Width="25"/>
+                </Button>
+                <Label Content="* Incorrect password" Foreground="{DynamicResource ErrorBrush}" Visibility="{Binding IncorrectLabelVisibility}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <Button Margin="0 30 0 0" Width="150" Style="{DynamicResource ADD_Button}" Command="{Binding OpenMainWindow}">
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+                        <TextBlock Text="Next" Margin="50 0 0 0" VerticalAlignment="Center" HorizontalAlignment="Left" Foreground="White" FontWeight="Bold" FontSize="16"/>
+                        <materialDesign:PackIcon Kind="ArrowRight" Foreground="White" Height="25" Width="25" HorizontalAlignment="Right" Margin="30 0 0 0"/>
+                    </StackPanel>
+                </Button>
+            </StackPanel>
+        </Grid>
     </Border>
 </Window>

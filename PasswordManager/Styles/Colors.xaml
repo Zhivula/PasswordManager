@@ -9,4 +9,12 @@
     <SolidColorBrush x:Key="LightBrightTurquoiseBrush" Color="#77DDE7"/>
     <Color x:Key="LightBrightTurquoiseColor">#77DDE7</Color>
 
+    <!--Красный (для ошибок)-->
+    <SolidColorBrush x:Key="ErrorBrush" Color="#CC0605"/>
+    <Color x:Key="ErrorColor">#CC0605</Color>
+
+    <!--Красный (для ошибок)-->
+    <SolidColorBrush x:Key="WhiiteBrush" Color="#FFF"/>
+    <Color x:Key="WhiteColor">#FFF</Color>
+    
 </ResourceDictionary>

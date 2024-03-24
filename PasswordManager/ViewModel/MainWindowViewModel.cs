@@ -16,7 +16,7 @@ namespace PasswordManager.ViewModel
 
         readonly MainWindow window = Application.Current.Windows.OfType<MainWindow>().FirstOrDefault();
 
-        public MainWindowViewModel()
+        public MainWindowViewModel(string key)
         {
 
         }

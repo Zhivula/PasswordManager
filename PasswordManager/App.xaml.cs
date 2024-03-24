@@ -1,4 +1,6 @@
-﻿using System;
+﻿using PasswordManager.DataBase;
+using PasswordManager.Properties;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
@@ -13,5 +15,19 @@ namespace PasswordManager
     /// </summary>
     public partial class App : Application
     {
+        public App()
+        {
+            var hash = (string)Settings.Default["HASH"];
+            if (string.IsNullOrEmpty(hash))
+            {
+                FirstStartAppWindow window = new FirstStartAppWindow();
+                window.Show();
+            }
+            else
+            {
+                StartAppView window = new StartAppView();
+                window.Show();
+            }
+        }
     }
 }

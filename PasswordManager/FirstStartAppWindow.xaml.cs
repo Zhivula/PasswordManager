@@ -11,20 +11,19 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace PasswordManager.View
+namespace PasswordManager
 {
     /// <summary>
-    /// Логика взаимодействия для RecordsView.xaml
+    /// Логика взаимодействия для FirstStartAppView.xaml
     /// </summary>
-    public partial class RecordsView : UserControl
+    public partial class FirstStartAppWindow : Window
     {
-        public RecordsView(string key)
+        public FirstStartAppWindow()
         {
             InitializeComponent();
-            DataContext = new RecordsViewModel(key);
+            DataContext = new FirstStartAppViewModel();
         }
     }
 }

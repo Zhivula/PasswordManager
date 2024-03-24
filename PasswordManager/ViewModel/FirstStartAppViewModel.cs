@@ -11,7 +11,7 @@ using System.Windows.Input;
 
 namespace PasswordManager.ViewModel
 {
-    class StartAppViewModel : INotifyPropertyChanged
+    class FirstStartAppViewModel : INotifyPropertyChanged
     {
         private string password;
         public string Password
@@ -19,27 +19,26 @@ namespace PasswordManager.ViewModel
             get => password;
             set
             {
-                if (string.IsNullOrWhiteSpace(value)) IncorrectLabelVisibility = Visibility.Hidden;
                 password = value;
                 OnPropertyChanged(nameof(Password));
             }
         }
-        private Visibility incorrectLabelVisibility;
-        public Visibility IncorrectLabelVisibility
+        private string confirmPassword;
+        public string ConfirmPassword
         {
-            get => incorrectLabelVisibility;
+            get => confirmPassword;
             set
             {
-                incorrectLabelVisibility = value;
-                OnPropertyChanged(nameof(IncorrectLabelVisibility));
+                confirmPassword = value;
+                OnPropertyChanged(nameof(ConfirmPassword));
             }
         }
 
-        readonly StartAppView window = Application.Current.Windows.OfType<StartAppView>().FirstOrDefault();
-
-        public StartAppViewModel()
+        readonly FirstStartAppWindow window = Application.Current.Windows.OfType<FirstStartAppWindow>().FirstOrDefault();
+        
+        public FirstStartAppViewModel()
         {
-            IncorrectLabelVisibility = Visibility.Hidden;
+
         }
         public ICommand WindowClose => new DelegateCommand(o =>
         {
@@ -51,27 +50,16 @@ namespace PasswordManager.ViewModel
         });
         public ICommand OpenMainWindow => new DelegateCommand(o =>
         {
-            if (!string.IsNullOrWhiteSpace(Password))
+            if (ConfirmPassword.Equals(Password) && Password.Length > 12)
             {
                 var SHA512_EN = SHA256.Encrypt(Password, SHA256.passPhrase, SHA256.saltValue, SHA256.hashAlgorithm, SHA256.passwordIterations, SHA256.initVector, SHA256.keySize);
-
-                //if (SHA512_EN.Equals((string)Settings.Default["HASH"]))
-                //{
                 Settings.Default["HASH"] = SHA512_EN;
                 Settings.Default.Save();
 
-
-
                 MainWindow mainWindow = new MainWindow(SHA512_EN);
-                    mainWindow.Show();
-                    window.Close();
-                //}
-                //else
-                //{
-                //    IncorrectLabelVisibility = Visibility.Visible;
-                //}
+                mainWindow.Show();
+                window.Close();
             }
-
         });
         #region PropertyChanged
         public event PropertyChangedEventHandler PropertyChanged;
