@@ -17,7 +17,23 @@ namespace PasswordManager
     {
         public App()
         {
+            //using (var context = new MyDbContext())
+            //{
+            //    context.Database.Delete();
+
+            //    context.SaveChanges();
+            //}
             var hash = (string)Settings.Default["HASH"];
+
+
+
+
+
+            hash = string.Empty;
+
+
+
+
             if (string.IsNullOrEmpty(hash))
             {
                 FirstStartAppWindow window = new FirstStartAppWindow();

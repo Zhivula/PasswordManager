@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -53,24 +54,24 @@ namespace PasswordManager.ViewModel
         {
             if (!string.IsNullOrWhiteSpace(Password))
             {
-                var SHA512_EN = SHA256.Encrypt(Password, SHA256.passPhrase, SHA256.saltValue, SHA256.hashAlgorithm, SHA256.passwordIterations, SHA256.initVector, SHA256.keySize);
+                byte[] SHA512_EN = new byte[0];
+                byte[] data = Encoding.UTF8.GetBytes(Password);
+                using (SHA512 sha512 = SHA512.Create())
+                {
+                    SHA512_EN = sha512.ComputeHash(data);
+                }
 
-                //if (SHA512_EN.Equals((string)Settings.Default["HASH"]))
-                //{
-                Settings.Default["HASH"] = SHA512_EN;
-                Settings.Default.Save();
-
-
-
-                MainWindow mainWindow = new MainWindow(SHA512_EN);
+                if (SHA512_EN.Equals((string)Settings.Default["HASH"]))
+                {
+                    MainWindow mainWindow = new MainWindow(Password);
                     mainWindow.Show();
                     window.Close();
-                //}
-                //else
-                //{
-                //    IncorrectLabelVisibility = Visibility.Visible;
-                //}
-            }
+                }
+                else
+                {
+                    IncorrectLabelVisibility = Visibility.Visible;
+                }
+        }
 
         });
         #region PropertyChanged

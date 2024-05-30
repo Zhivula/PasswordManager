@@ -37,7 +37,11 @@ namespace PasswordManager.ViewModel
             window.ChangedGrid.Children.Clear();
             window.ChangedGrid.Children.Add(new AddRecordView());
         });
-
+        public ICommand AccountsCommand => new DelegateCommand(o =>
+        {
+            window.ChangedGrid.Children.Clear();
+            window.ChangedGrid.Children.Add(new RecordsView(null));
+        });
         #region PropertyChanged
         public event PropertyChangedEventHandler PropertyChanged;
         private void OnPropertyChanged(string name)

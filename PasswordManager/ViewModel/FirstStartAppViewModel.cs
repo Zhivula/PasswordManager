@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -50,13 +51,19 @@ namespace PasswordManager.ViewModel
         });
         public ICommand OpenMainWindow => new DelegateCommand(o =>
         {
-            if (ConfirmPassword.Equals(Password) && Password.Length > 12)
+            if (ConfirmPassword.Equals(Password) && Password.Length > 7)
             {
-                var SHA512_EN = SHA256.Encrypt(Password, SHA256.passPhrase, SHA256.saltValue, SHA256.hashAlgorithm, SHA256.passwordIterations, SHA256.initVector, SHA256.keySize);
-                Settings.Default["HASH"] = SHA512_EN;
+                byte[] SHA512_EN = new byte[0];
+                byte[] data = Encoding.UTF8.GetBytes(Password);
+                using (SHA512 sha512 = SHA512.Create())
+                {
+                    SHA512_EN = sha512.ComputeHash(data);
+                }
+
+                Settings.Default["HASH"] = SHA512_EN.ToString();
                 Settings.Default.Save();
 
-                MainWindow mainWindow = new MainWindow(SHA512_EN);
+                MainWindow mainWindow = new MainWindow(Password);
                 mainWindow.Show();
                 window.Close();
             }

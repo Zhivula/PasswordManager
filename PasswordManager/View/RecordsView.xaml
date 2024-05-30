@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:PasswordManager.View"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             d:DesignHeight="450" d:DesignWidth="800" Background="Red">
     <StackPanel>
         <ListView ScrollViewer.CanContentScroll="False" ItemsSource="{Binding Accounts, UpdateSourceTrigger=PropertyChanged}" Background="Transparent" BorderThickness="0" Margin="0 45 0 0">
             <ListView.ItemTemplate>

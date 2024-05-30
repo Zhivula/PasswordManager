@@ -13,7 +13,7 @@
                 <TranslateTransform X="0" Y="0"/>
             </StackPanel.RenderTransform>-->
             <Label Content="Title" Foreground="{DynamicResource LightBrightTurquoiseBrush}"/>
-            <TextBox Text="{Binding Date, UpdateSourceTrigger=PropertyChanged}" FontSize="16" Padding="3 0 0 0" Height="26" Foreground="White">
+            <TextBox Text="{Binding Title, UpdateSourceTrigger=PropertyChanged}" FontSize="16" Padding="3 0 0 0" Height="26" Foreground="White">
                 <TextBox.Template>
                     <ControlTemplate>
                         <Border CornerRadius="5"  BorderThickness="1" BorderBrush="#FF468AFF" Background="Transparent">
@@ -28,7 +28,7 @@
                 <TranslateTransform X="0" Y="0"/>
             </StackPanel.RenderTransform>-->
             <Label Content="login" Foreground="{DynamicResource LightBrightTurquoiseBrush}"/>
-            <TextBox Text="{Binding Date, UpdateSourceTrigger=PropertyChanged}" FontSize="16" Padding="3 0 0 0" Height="26" Foreground="White">
+            <TextBox Text="{Binding Login, UpdateSourceTrigger=PropertyChanged}" FontSize="16" Padding="3 0 0 0" Height="26" Foreground="White">
                 <TextBox.Template>
                     <ControlTemplate>
                         <Border CornerRadius="5"  BorderThickness="1" BorderBrush="#FF468AFF" Background="Transparent">
@@ -43,7 +43,7 @@
                 <TranslateTransform X="0" Y="0"/>
             </StackPanel.RenderTransform>-->
             <Label Content="Password" Foreground="{DynamicResource LightBrightTurquoiseBrush}"/>
-            <TextBox Text="{Binding Date, UpdateSourceTrigger=PropertyChanged}" FontSize="16" Padding="3 0 0 0" Height="26" Foreground="White">
+            <TextBox Text="{Binding Password, UpdateSourceTrigger=PropertyChanged}" FontSize="16" Padding="3 0 0 0" Height="26" Foreground="White">
                 <TextBox.Template>
                     <ControlTemplate>
                         <Border CornerRadius="5"  BorderThickness="1" BorderBrush="#FF468AFF" Background="Transparent">
@@ -58,7 +58,7 @@
                 <TranslateTransform X="0" Y="0"/>
             </StackPanel.RenderTransform>-->
             <Label Content="Comment" Foreground="{DynamicResource LightBrightTurquoiseBrush}"/>
-            <TextBox Text="{Binding Date, UpdateSourceTrigger=PropertyChanged}" FontSize="16" Padding="3 0 0 0" Height="75" Foreground="White">
+            <TextBox Text="{Binding Comment, UpdateSourceTrigger=PropertyChanged}" FontSize="16" Padding="3 0 0 0" Height="75" Foreground="White">
                 <TextBox.Template>
                     <ControlTemplate>
                         <Border CornerRadius="5"  BorderThickness="1" BorderBrush="#FF468AFF" Background="Transparent">
