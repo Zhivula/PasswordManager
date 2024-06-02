@@ -21,10 +21,10 @@ namespace PasswordManager.View
     /// </summary>
     public partial class RecordsView : UserControl
     {
-        public RecordsView(string key)
+        public RecordsView(string MasterPassword)
         {
             InitializeComponent();
-            DataContext = new RecordsViewModel(key);
+            DataContext = new RecordsViewModel(MasterPassword);
         }
     }
 }

@@ -54,11 +54,11 @@ namespace PasswordManager.ViewModel
         {
             if (!string.IsNullOrWhiteSpace(Password))
             {
-                byte[] SHA512_EN = new byte[0];
+                string SHA512_EN;
                 byte[] data = Encoding.UTF8.GetBytes(Password);
                 using (SHA512 sha512 = SHA512.Create())
                 {
-                    SHA512_EN = sha512.ComputeHash(data);
+                    SHA512_EN = sha512.ComputeHash(data).ToString();
                 }
 
                 if (SHA512_EN.Equals((string)Settings.Default["HASH"]))

@@ -23,27 +23,25 @@ namespace PasswordManager
 
             //    context.SaveChanges();
             //}
-            var hash = (string)Settings.Default["HASH"];
+            MainWindow mainWindow = new MainWindow("12345678");
+            mainWindow.Show();
 
 
 
 
 
-            hash = string.Empty;
+            //var hash = (string)Settings.Default["HASH"];
 
-
-
-
-            if (string.IsNullOrEmpty(hash))
-            {
-                FirstStartAppWindow window = new FirstStartAppWindow();
-                window.Show();
-            }
-            else
-            {
-                StartAppView window = new StartAppView();
-                window.Show();
-            }
+            //if (string.IsNullOrEmpty(hash))
+            //{
+            //    FirstStartAppWindow window = new FirstStartAppWindow();
+            //    window.Show();
+            //}
+            //else
+            //{
+            //    StartAppView window = new StartAppView();
+            //    window.Show();
+            //}
         }
     }
 }

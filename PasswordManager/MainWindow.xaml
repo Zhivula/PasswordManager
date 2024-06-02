@@ -114,9 +114,9 @@
                                 </Grid>
                             </StackPanel>
                         </StackPanel>
-                    </StackPanel>
-                    <RadioButton Style="{DynamicResource MenuButton}" Command="{Binding AccountsCommand}">
-                        <StackPanel Orientation="Horizontal">
+                    </StackPanel> 
+                <RadioButton Style="{DynamicResource MenuButton}" Command="{Binding AccountsCommand}">
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
                             <materialDesign:PackIcon Name="md_first" Kind="Account" Foreground="{DynamicResource LightBrightTurquoiseBrush}" Height="25" Width="25" VerticalAlignment="Center"/>
                             <TextBlock Text=" ACCOUNTS" Style="{DynamicResource Menu}"/>
                         </StackPanel>

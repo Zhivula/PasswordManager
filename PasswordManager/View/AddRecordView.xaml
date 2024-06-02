@@ -7,8 +7,8 @@
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <StackPanel Margin="20">
-        <StackPanel Margin="0 20 0 0">
+    <StackPanel Margin="20 0 20 5">
+        <StackPanel Margin="0">
             <!--<StackPanel.RenderTransform>
                 <TranslateTransform X="0" Y="0"/>
             </StackPanel.RenderTransform>-->
@@ -23,7 +23,7 @@
                 </TextBox.Template>
             </TextBox>
         </StackPanel>
-        <StackPanel Margin="0 20 0 0">
+        <StackPanel Margin="0 18 0 0">
             <!--<StackPanel.RenderTransform>
                 <TranslateTransform X="0" Y="0"/>
             </StackPanel.RenderTransform>-->
@@ -38,7 +38,7 @@
                 </TextBox.Template>
             </TextBox>
         </StackPanel>
-        <StackPanel Margin="0 20 0 0">
+        <StackPanel Margin="0 18 0 0">
             <!--<StackPanel.RenderTransform>
                 <TranslateTransform X="0" Y="0"/>
             </StackPanel.RenderTransform>-->
@@ -53,7 +53,22 @@
                 </TextBox.Template>
             </TextBox>
         </StackPanel>
-        <StackPanel Margin="0 20 0 0">
+        <StackPanel Margin="0 18 0 0">
+            <!--<StackPanel.RenderTransform>
+                <TranslateTransform X="0" Y="0"/>
+            </StackPanel.RenderTransform>-->
+            <Label Content="Master Password" Foreground="{DynamicResource LightBrightTurquoiseBrush}"/>
+            <TextBox Text="{Binding MasterPassword, UpdateSourceTrigger=PropertyChanged}" FontSize="16" Padding="3 0 0 0" Height="26" Foreground="White">
+                <TextBox.Template>
+                    <ControlTemplate>
+                        <Border CornerRadius="5"  BorderThickness="1" BorderBrush="#FF468AFF" Background="Transparent">
+                            <ScrollViewer Margin="0" x:Name="PART_ContentHost" />
+                        </Border>
+                    </ControlTemplate>
+                </TextBox.Template>
+            </TextBox>
+        </StackPanel>
+        <StackPanel Margin="0 18 0 0">
             <!--<StackPanel.RenderTransform>
                 <TranslateTransform X="0" Y="0"/>
             </StackPanel.RenderTransform>-->
@@ -68,7 +83,7 @@
                 </TextBox.Template>
             </TextBox>
         </StackPanel>
-        <Button Margin="0 20 0 0" Width="150" Style="{DynamicResource ADD_Button}" Command="{Binding Save}">
+        <Button Margin="0 18 0 0" Width="150" Style="{DynamicResource ADD_Button}" Command="{Binding Save}">
             <!--<Button.RenderTransform>
                 <TranslateTransform X="0" Y="30"/>
             </Button.RenderTransform>-->

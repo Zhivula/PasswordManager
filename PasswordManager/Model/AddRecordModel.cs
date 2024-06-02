@@ -1,4 +1,5 @@
-﻿using PasswordManager.DataBase;
+﻿using PasswordManager.Data;
+using PasswordManager.DataBase;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,7 +21,7 @@ namespace PasswordManager.Model
         /// <param name="Login">Логин</param>
         /// <param name="Password">Пароль</param>
         /// <param name="Comment">Комментарий</param>
-        public void AddRecord(string Title, string Login, string Password, string Comment)
+        public void AddRecord(string Title, string Login, string Password, string MasterPassword, string Comment)
         {
             using (var context = new MyDbContext())
             {
@@ -28,11 +29,12 @@ namespace PasswordManager.Model
                 {
                     Title = Title,
                     Login = Login,
-                    Password = Password,
+                    Password = RijndaelManagedEncryption.EncryptText(Password, MasterPassword),
                     Comment = Comment
                 });
                 context.SaveChanges();
             }
+
         }
     }
 }

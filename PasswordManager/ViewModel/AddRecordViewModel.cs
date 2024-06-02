@@ -43,6 +43,16 @@ namespace PasswordManager.ViewModel
                 OnPropertyChanged(nameof(Password));
             }
         }
+        private string masterPassword;
+        public string MasterPassword
+        {
+            get => masterPassword;
+            set
+            {
+                masterPassword = value; 
+                OnPropertyChanged(nameof(MasterPassword));
+            }
+        }
         private string comment;
         public string Comment
         {
@@ -63,10 +73,10 @@ namespace PasswordManager.ViewModel
         }
         public ICommand Save => new DelegateCommand(o =>
         {
-            if (!string.IsNullOrWhiteSpace(Password) || !string.IsNullOrWhiteSpace(Title) || !string.IsNullOrWhiteSpace(Login))
+            if (!string.IsNullOrWhiteSpace(Password) || !string.IsNullOrWhiteSpace(MasterPassword) || !string.IsNullOrWhiteSpace(Title) || !string.IsNullOrWhiteSpace(Login))
             {
-                model.AddRecord(Title, Login, Password, Comment);
-                Password = Title = Login = Comment = string.Empty;
+                model.AddRecord(Title, Login, Password, MasterPassword, Comment);
+                Password = MasterPassword = Title = Login = Comment = string.Empty;
                 WindowSuccessfullyViewModel.Successfully();
             }
         });

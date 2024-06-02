@@ -8,13 +8,14 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 
 namespace PasswordManager.ViewModel
 {
     class RecordsViewModel : INotifyPropertyChanged
     {
-        private List<Account> accounts;
-        public List<Account> Accounts
+        private ObservableCollection<AccountFilter> accounts;
+        public ObservableCollection<AccountFilter> Accounts
         {
             get => accounts;
             set
@@ -26,11 +27,27 @@ namespace PasswordManager.ViewModel
 
         readonly RecordsModel model = new RecordsModel();
 
-        public RecordsViewModel(string key)
+        public RecordsViewModel(string MasterPassword)
         {
-            Accounts = model.GetAccounts();
-        }
+            Accounts = new ObservableCollection<AccountFilter>();
+            var modelaccounts = model.GetAccounts();
+            if (modelaccounts.Count() > 0)
+            {
+                foreach (var i in modelaccounts)
+                {
+                    var password = RijndaelManagedEncryption.DecryptText(i.Password, MasterPassword);
 
+                    Accounts.Add(new AccountFilter {
+                        Password = password,
+                        PasswordTrue = string.Copy(password),
+                        Id = i.Id,
+                        Comment = i.Comment,
+                        Login = i.Login,
+                        Title = i.Title
+                    });
+                }
+            }
+        }
         #region PropertyChanged
         public event PropertyChangedEventHandler PropertyChanged;
         private void OnPropertyChanged(string name)

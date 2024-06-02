@@ -27,7 +27,7 @@ namespace PasswordManager.Model
                     }
                     return ListMainPage;
                 }
-                else return null;
+                else return ListMainPage;
             }
         }
     }

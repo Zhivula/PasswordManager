@@ -22,11 +22,11 @@ namespace PasswordManager
     /// </summary>
     public partial class MainWindow : Window
     {
-        public MainWindow(string key)
+        public MainWindow(string MasterPassword)
         {
             InitializeComponent();
-            DataContext = new MainWindowViewModel(key);
-            ChangedGrid.Children.Add(new RecordsView(key));
+            DataContext = new MainWindowViewModel(MasterPassword);
+            ChangedGrid.Children.Add(new RecordsView(MasterPassword));
         }
         private void OnMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {

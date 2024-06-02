@@ -53,16 +53,16 @@ namespace PasswordManager.ViewModel
         {
             if (ConfirmPassword.Equals(Password) && Password.Length > 7)
             {
-                byte[] SHA512_EN = new byte[0];
-                byte[] data = Encoding.UTF8.GetBytes(Password);
                 using (SHA512 sha512 = SHA512.Create())
                 {
-                    SHA512_EN = sha512.ComputeHash(data);
+                    byte[] SHA512_EN = new byte[0];
+                    byte[] data = Encoding.UTF8.GetBytes(Password);
+
+                    SHA512_EN = sha512.ComputeHash(data); 
+                    
+                    Settings.Default["HASH"] = SHA512_EN.ToString();
+                    Settings.Default.Save();
                 }
-
-                Settings.Default["HASH"] = SHA512_EN.ToString();
-                Settings.Default.Save();
-
                 MainWindow mainWindow = new MainWindow(Password);
                 mainWindow.Show();
                 window.Close();

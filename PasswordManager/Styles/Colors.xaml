@@ -13,8 +13,8 @@
     <SolidColorBrush x:Key="ErrorBrush" Color="#CC0605"/>
     <Color x:Key="ErrorColor">#CC0605</Color>
 
-    <!--Красный (для ошибок)-->
-    <SolidColorBrush x:Key="WhiiteBrush" Color="#FFF"/>
+    <!--Белый-->
+    <SolidColorBrush x:Key="WhiteBrush" Color="#FFF"/>
     <Color x:Key="WhiteColor">#FFF</Color>
     
 </ResourceDictionary>

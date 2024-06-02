@@ -10,16 +10,11 @@
             <Setter Property="Background" Value="Transparent"/>
             <Setter Property="BorderThickness" Value="0"/>
             <Setter Property="Foreground" Value="{DynamicResource BrightTurquoiseBrush}"/>
-            <Setter Property="Margin" Value="20 7 7 0"/>
+            <Setter Property="Margin" Value="10 5 0 5"/>
             <Setter Property="FontSize" Value="{DynamicResource Big}"/>
-            
-            <Setter Property="HorizontalAlignment" Value="Left"/>
-            <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+            <Setter Property="HorizontalContentAlignment" Value="Left"/>
         </Style.Setters>
         <Style.Triggers>
-            <Trigger Property="IsChecked" Value="true">
-                <Setter Property="Background" Value="#32127A"/>
-            </Trigger>
             <EventTrigger RoutedEvent="ToggleButton.MouseEnter">
                 <BeginStoryboard>
                     <Storyboard>
@@ -166,5 +161,64 @@
                 </BeginStoryboard>
             </EventTrigger>
         </Style.Triggers>
+    </Style>
+
+    <!--Кнопки сокрытия паролей-->
+    <Style x:Key="VisionPassword" TargetType="Button">
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="FontFamily" Value="{DynamicResource BaseFont}"/>
+        <Setter Property="FontSize" Value="{DynamicResource Regular}"/>
+        <Setter Property="Foreground" Value="White"/>
+        <Setter Property="FontWeight" Value="DemiBold"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="HorizontalAlignment" Value="Right"/>
+        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="Margin" Value="5 0 0 0"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border Name="brd" Background="{TemplateBinding Background}" CornerRadius="5">
+                        <ContentPresenter Margin="5" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </Border>
+
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsDefaulted" Value="true">
+                            <Setter Property="Background" Value="Transparent"/>
+                        </Trigger>
+                        <Trigger Property="IsMouseOver" Value="true">
+                            <Setter Property="Foreground" Value="{DynamicResource BrightTurquoiseBrush}"/>
+                            <Setter Property="Cursor" Value="Hand"/>
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="true">
+                            <Setter Property="Background" Value="Transparent"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <!--<Style.Triggers>
+            <EventTrigger RoutedEvent="Button.MouseEnter">
+                <BeginStoryboard>
+                    <Storyboard>
+                        <DoubleAnimation Storyboard.TargetProperty="(UIElement.RenderTransform).(RotateTransform.Angle)"
+                                         From="0"
+                                         To="90"
+                                         Duration="0:0:0.2"
+                                         FillBehavior="HoldEnd"/>
+                    </Storyboard>
+                </BeginStoryboard>
+            </EventTrigger>
+            <EventTrigger RoutedEvent="Button.MouseLeave">
+                <BeginStoryboard>
+                    <Storyboard>
+                        <DoubleAnimation Storyboard.TargetProperty="(UIElement.RenderTransform).(RotateTransform.Angle)"
+                                         From="90"
+                                         To="0"
+                                         Duration="0:0:0.2"
+                                         FillBehavior="HoldEnd"/>
+                    </Storyboard>
+                </BeginStoryboard>
+            </EventTrigger>
+        </Style.Triggers>-->
     </Style>
 </ResourceDictionary>
