@@ -39,7 +39,7 @@ namespace PasswordManager.ViewModel
 
                     Accounts.Add(new AccountFilter {
                         Password = password,
-                        PasswordTrue = string.Copy(password),
+                        PasswordTrue = password,
                         Id = i.Id,
                         Comment = i.Comment,
                         Login = i.Login,

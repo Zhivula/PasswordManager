@@ -15,19 +15,50 @@
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="5*"/>
                         <ColumnDefinition Width="9*"/>
-                        <ColumnDefinition Width="40"/>
+                        <ColumnDefinition Width="100"/>
                     </Grid.ColumnDefinitions>
                     <Grid Grid.Column="0">
-                        <TextBox Text="{Binding Path=Title}" Style="{DynamicResource BaseText}" TextAlignment="Left" HorizontalAlignment="Left" IsReadOnly="True"/>
+                        <TextBox Text="{Binding Path=Title}" Style="{DynamicResource RecordsText}">
+                            <TextBox.Template>
+                                <ControlTemplate>
+                                    <Border CornerRadius="5"  BorderThickness="0" BorderBrush="#FF468AFF" Background="{Binding Path=Background}">
+                                        <ScrollViewer Margin="0" x:Name="PART_ContentHost" />
+                                    </Border>
+                                </ControlTemplate>
+                            </TextBox.Template>
+                        </TextBox>
                     </Grid>
-                    <StackPanel Orientation="Vertical" Grid.Column="1">
-                        <TextBox Text="{Binding Path=Login}" Style="{DynamicResource BaseText}" TextAlignment="Left" HorizontalAlignment="Left" IsReadOnly="True" Margin="0 0 0 5"/>
-                        <TextBox Text="{Binding Path=Password, NotifyOnSourceUpdated=True}" Style="{DynamicResource BaseText}" TextAlignment="Left" HorizontalAlignment="Left" IsReadOnly="True"/>
+                    <StackPanel Grid.Column="1" Orientation="Vertical">
+                        <TextBox Text="{Binding Path=Login}" Style="{DynamicResource RecordsText}" Margin="0 0 0 5">
+                            <TextBox.Template>
+                                <ControlTemplate>
+                                    <Border CornerRadius="5"  BorderThickness="0" BorderBrush="#FF468AFF" Background="{Binding Path=Background}">
+                                        <ScrollViewer Margin="0" x:Name="PART_ContentHost" />
+                                    </Border>
+                                </ControlTemplate>
+                            </TextBox.Template>
+                        </TextBox>
+                        <TextBox Text="{Binding Path=Password}" Style="{DynamicResource RecordsText}">
+                            <TextBox.Template>
+                                <ControlTemplate>
+                                    <Border CornerRadius="5"  BorderThickness="0" BorderBrush="#FF468AFF" Background="{Binding Path=Background}">
+                                        <ScrollViewer Margin="0" x:Name="PART_ContentHost" />
+                                    </Border>
+                                </ControlTemplate>
+                            </TextBox.Template>
+                        </TextBox>
                     </StackPanel>
-
-                    <Button Grid.Column="2" Style="{DynamicResource VisionPassword}" Command="{Binding Command}">
-                        <materialDesign:PackIcon Kind="Eye" Foreground="White" Height="25" Width="25"/>
-                    </Button>
+                    <StackPanel Grid.Column="2" Orientation="Horizontal">
+                        <Button Style="{DynamicResource VisionPassword}" Command="{Binding SaveCommand}">
+                            <materialDesign:PackIcon Kind="ContentSave" Foreground="{Binding Path=Foreground_Save}" Height="20" Width="20"/>
+                        </Button>
+                        <Button Style="{DynamicResource VisionPassword}" Command="{Binding ChangeCommand}">
+                            <materialDesign:PackIcon Kind="Pencil" Foreground="{Binding Path=Foreground_Change}" Height="20" Width="20"/>
+                        </Button>
+                        <Button Style="{DynamicResource VisionPassword}" Command="{Binding VisionCommand}">
+                            <materialDesign:PackIcon Kind="Eye" Foreground="{Binding Path=Foreground_Vision}" Height="20" Width="20"/>
+                        </Button>
+                    </StackPanel>
                 </Grid>
             </DataTemplate>
         </ListView.ItemTemplate>
