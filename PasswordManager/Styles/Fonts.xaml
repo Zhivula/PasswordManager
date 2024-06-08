@@ -5,7 +5,7 @@
     
     <FontFamily x:Key="BaseFont">Consolas</FontFamily>
     <FontFamily x:Key="MenuFont">Segoe UI</FontFamily>
-    
+    <FontFamily x:Key="CardTitleFont">Segoe UI Black</FontFamily>
     
     <system:Double x:Key="Smal">14</system:Double>
     <system:Double x:Key="Regular">18</system:Double>

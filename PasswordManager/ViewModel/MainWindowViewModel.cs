@@ -33,14 +33,28 @@ namespace PasswordManager.ViewModel
             window.WindowState = WindowState.Normal;
         });
         public ICommand Add => new DelegateCommand(o =>
-        {
-            window.ChangedGrid.Children.Clear();
-            window.ChangedGrid.Children.Add(new AddRecordView());
+        {      
+            if (window.ChangedGrid.Children.Count > 0 && window.ChangedGrid.Children[window.ChangedGrid.Children.Count-1].GetType() == new CardsView().GetType())
+            {
+                window.ChangedGrid.Children.Clear();
+                window.ChangedGrid.Children.Add(new AddCardView());
+            }
+            else
+            {
+                window.ChangedGrid.Children.Clear();
+                window.ChangedGrid.Children.Add(new AddRecordView());
+            }
+            
         });
         public ICommand AccountsCommand => new DelegateCommand(o =>
         {
             window.ChangedGrid.Children.Clear();
             window.ChangedGrid.Children.Add(new RecordsView(null));
+        });
+        public ICommand CardsCommand => new DelegateCommand(o =>
+        {
+            window.ChangedGrid.Children.Clear();
+            window.ChangedGrid.Children.Add(new CardsView());
         });
         #region PropertyChanged
         public event PropertyChangedEventHandler PropertyChanged;

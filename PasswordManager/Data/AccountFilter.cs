@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PasswordManager.DataBase;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -102,6 +103,11 @@ namespace PasswordManager.Data
                 OnPropertyChanged(nameof(IsReadOnly));
             }
         }
+
+        private string oldTitle;
+        private string oldLogin;
+        private string oldPassword;
+
         private SolidColorBrush background;
         public SolidColorBrush Background
         {
@@ -110,6 +116,16 @@ namespace PasswordManager.Data
             {
                 background = value;
                 OnPropertyChanged(nameof(Background));
+            }
+        }
+        private SolidColorBrush foreground;
+        public SolidColorBrush Foreground
+        {
+            get => foreground;
+            set
+            {
+                foreground = value;
+                OnPropertyChanged(nameof(Foreground));
             }
         }
         private SolidColorBrush foreground_Save;
@@ -142,6 +158,7 @@ namespace PasswordManager.Data
                 OnPropertyChanged(nameof(Foreground_Vision));
             }
         }
+
         public DelegateCommand VisionCommand { get; set; }
         public DelegateCommand ChangeCommand { get; set; }
         public DelegateCommand SaveCommand { get; set; }
@@ -153,6 +170,7 @@ namespace PasswordManager.Data
             clickSave = false;
             IsReadOnly = true;
             Background = new SolidColorBrush(Colors.Transparent);
+            Foreground = new SolidColorBrush(Colors.White);
             Foreground_Save = new SolidColorBrush(Colors.Gray);
             Foreground_Change = new SolidColorBrush(Colors.White);
             Foreground_Vision = new SolidColorBrush(Colors.White);
@@ -181,7 +199,11 @@ namespace PasswordManager.Data
                 ClickSave = true;
                 ClickVision = true;
                 IsReadOnly = false;
+                oldLogin = Login;
+                oldTitle = Title;
+                oldPassword = Password;
                 Background = new SolidColorBrush(Colors.SkyBlue);
+                Foreground = new SolidColorBrush(Colors.Black);
                 Foreground_Change = new SolidColorBrush(Colors.Gray);
                 Foreground_Save = new SolidColorBrush(Colors.White);
                 Foreground_Vision = new SolidColorBrush(Colors.Gray);
@@ -196,9 +218,38 @@ namespace PasswordManager.Data
                 ClickVision = false;
                 IsReadOnly = true;
                 Background = new SolidColorBrush(Colors.Transparent);
+                Foreground = new SolidColorBrush(Colors.White);
                 Foreground_Change = new SolidColorBrush(Colors.White);
                 Foreground_Save = new SolidColorBrush(Colors.Gray);
                 Foreground_Vision = new SolidColorBrush(Colors.White);
+                Check();
+            }
+        }
+        private void Check()
+        {
+            if (!oldTitle.Equals(Title))
+            {
+                using (var context = new MyDbContext())
+                {
+                    context.Accounts.Where(x => x.Id == Id).FirstOrDefault().Title = Title;
+                    context.SaveChanges();
+                }
+            }
+            if (!oldLogin.Equals(Login))
+            {
+                using (var context = new MyDbContext())
+                {
+                    context.Accounts.Where(x => x.Id == Id).FirstOrDefault().Login = Login;
+                    context.SaveChanges();
+                }
+            }
+            if (!oldPassword.Equals(Password))
+            {
+                using (var context = new MyDbContext())
+                {
+                    context.Accounts.Where(x => x.Id == Id).FirstOrDefault().Password = RijndaelManagedEncryption.EncryptText(Password, "12345678");
+                    context.SaveChanges();
+                }
             }
         }
         #region PropertyChanged
