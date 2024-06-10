@@ -116,19 +116,19 @@
                         </StackPanel>
                     </StackPanel> 
                 <RadioButton Style="{DynamicResource MenuButton}" Command="{Binding AccountsCommand}">
-                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
+                        <StackPanel Orientation="Horizontal" Margin="10 5 0 5">
                             <materialDesign:PackIcon Name="md_first" Kind="Account" Foreground="{DynamicResource LightBrightTurquoiseBrush}" Height="25" Width="25" VerticalAlignment="Center"/>
                             <TextBlock Text=" ACCOUNTS" Style="{DynamicResource Menu}"/>
                         </StackPanel>
                     </RadioButton>
                     <RadioButton Style="{DynamicResource MenuButton}" Command="{Binding CardsCommand}">
-                        <StackPanel Orientation="Horizontal">
+                        <StackPanel Orientation="Horizontal" Margin="10 5 0 5">
                             <materialDesign:PackIcon Kind="Card" Foreground="{DynamicResource LightBrightTurquoiseBrush}" Height="{Binding ElementName=md_first, Path=Height}" Width="{Binding ElementName=md_first, Path=Width}" VerticalAlignment="Center"/>
                             <TextBlock Text=" CARDS" Style="{DynamicResource Menu}"/>
                         </StackPanel>
                     </RadioButton>
                     <RadioButton Style="{DynamicResource MenuButton}" Command="{Binding MailCommand}">
-                        <StackPanel Orientation="Horizontal">
+                        <StackPanel Orientation="Horizontal" Margin="10 5 0 5">
                             <materialDesign:PackIcon Kind="Gmail" Foreground="{DynamicResource LightBrightTurquoiseBrush}" Height="{Binding ElementName=md_first, Path=Height}" Width="{Binding ElementName=md_first, Path=Width}" VerticalAlignment="Center"/>
                             <TextBlock Text=" MAIL" Style="{DynamicResource Menu}"/>
                         </StackPanel>

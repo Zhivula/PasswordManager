@@ -34,7 +34,7 @@ namespace PasswordManager.ViewModel
         });
         public ICommand Add => new DelegateCommand(o =>
         {      
-            if (window.ChangedGrid.Children.Count > 0 && window.ChangedGrid.Children[window.ChangedGrid.Children.Count-1].GetType() == new CardsView().GetType())
+            if (window.ChangedGrid.Children.Count > 0 && window.ChangedGrid.Children[window.ChangedGrid.Children.Count-1].GetType() == new CardsView(string.Empty).GetType())
             {
                 window.ChangedGrid.Children.Clear();
                 window.ChangedGrid.Children.Add(new AddCardView());
@@ -54,7 +54,7 @@ namespace PasswordManager.ViewModel
         public ICommand CardsCommand => new DelegateCommand(o =>
         {
             window.ChangedGrid.Children.Clear();
-            window.ChangedGrid.Children.Add(new CardsView());
+            window.ChangedGrid.Children.Add(new CardsView(null));
         });
         #region PropertyChanged
         public event PropertyChangedEventHandler PropertyChanged;

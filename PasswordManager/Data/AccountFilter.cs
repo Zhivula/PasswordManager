@@ -1,4 +1,5 @@
 ﻿using PasswordManager.DataBase;
+using PasswordManager.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -223,6 +224,7 @@ namespace PasswordManager.Data
                 Foreground_Save = new SolidColorBrush(Colors.Gray);
                 Foreground_Vision = new SolidColorBrush(Colors.White);
                 Check();
+                WindowSuccessfullyViewModel.Successfully();
             }
         }
         private void Check()

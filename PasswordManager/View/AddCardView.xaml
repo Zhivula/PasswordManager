@@ -13,7 +13,7 @@
                 <TranslateTransform X="0" Y="0"/>
             </StackPanel.RenderTransform>-->
             <Label Content="Bank" Foreground="{DynamicResource LightBrightTurquoiseBrush}"/>
-            <TextBox Text="{Binding Title, UpdateSourceTrigger=PropertyChanged}" FontSize="16" Padding="3 0 0 0" Height="26" Foreground="White">
+            <TextBox Text="{Binding Bank, UpdateSourceTrigger=PropertyChanged}" FontSize="16" Padding="3 0 0 0" Height="26" Foreground="White">
                 <TextBox.Template>
                     <ControlTemplate>
                         <Border CornerRadius="5"  BorderThickness="1" BorderBrush="#FF468AFF" Background="Transparent">
@@ -28,7 +28,7 @@
                 <TranslateTransform X="0" Y="0"/>
             </StackPanel.RenderTransform>-->
             <Label Content="Number" Foreground="{DynamicResource LightBrightTurquoiseBrush}"/>
-            <TextBox Text="{Binding Login, UpdateSourceTrigger=PropertyChanged}" FontSize="16" Padding="3 0 0 0" Height="26" Foreground="White">
+            <TextBox Text="{Binding Number, UpdateSourceTrigger=PropertyChanged}" FontSize="16" Padding="3 0 0 0" Height="26" Foreground="White">
                 <TextBox.Template>
                     <ControlTemplate>
                         <Border CornerRadius="5"  BorderThickness="1" BorderBrush="#FF468AFF" Background="Transparent">
@@ -43,7 +43,22 @@
                 <TranslateTransform X="0" Y="0"/>
             </StackPanel.RenderTransform>-->
             <Label Content="Date" Foreground="{DynamicResource LightBrightTurquoiseBrush}"/>
-            <TextBox Text="{Binding Password, UpdateSourceTrigger=PropertyChanged}" FontSize="16" Padding="3 0 0 0" Height="26" Foreground="White">
+            <TextBox Text="{Binding Date, UpdateSourceTrigger=PropertyChanged}" FontSize="16" Padding="3 0 0 0" Height="26" Foreground="White">
+                <TextBox.Template>
+                    <ControlTemplate>
+                        <Border CornerRadius="5"  BorderThickness="1" BorderBrush="#FF468AFF" Background="Transparent">
+                            <ScrollViewer Margin="0" x:Name="PART_ContentHost" />
+                        </Border>
+                    </ControlTemplate>
+                </TextBox.Template>
+            </TextBox>
+        </StackPanel>
+        <StackPanel Margin="0 18 0 0">
+            <!--<StackPanel.RenderTransform>
+                <TranslateTransform X="0" Y="0"/>
+            </StackPanel.RenderTransform>-->
+            <Label Content="Name" Foreground="{DynamicResource LightBrightTurquoiseBrush}"/>
+            <TextBox Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}" FontSize="16" Padding="3 0 0 0" Height="26" Foreground="White">
                 <TextBox.Template>
                     <ControlTemplate>
                         <Border CornerRadius="5"  BorderThickness="1" BorderBrush="#FF468AFF" Background="Transparent">

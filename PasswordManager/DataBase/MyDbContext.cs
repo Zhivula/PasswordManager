@@ -14,5 +14,6 @@ namespace PasswordManager.DataBase
 
         }
         public DbSet<Account> Accounts { get; set; }
+        public DbSet<Card> Cards { get; set; }
     }
 }

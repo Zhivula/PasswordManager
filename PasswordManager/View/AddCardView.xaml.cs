@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PasswordManager.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,7 @@ namespace PasswordManager.View
         public AddCardView()
         {
             InitializeComponent();
+            DataContext = new AddCardViewModel();
         }
     }
 }

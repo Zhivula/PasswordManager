@@ -10,16 +10,54 @@
             <Setter Property="Background" Value="Transparent"/>
             <Setter Property="BorderThickness" Value="0"/>
             <Setter Property="Foreground" Value="{DynamicResource BrightTurquoiseBrush}"/>
-            <Setter Property="Margin" Value="10 5 0 5"/>
+            <Setter Property="Margin" Value="0"/>
             <Setter Property="FontSize" Value="{DynamicResource Big}"/>
             <Setter Property="HorizontalContentAlignment" Value="Left"/>
         </Style.Setters>
         <Style.Triggers>
+            <!--<Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Background" Value="Transparent"/>
+            </Trigger>
+            <Trigger Property="IsPressed" Value="True">
+                <Setter Property="Background" Value="Green"/>
+            </Trigger>-->
             <EventTrigger RoutedEvent="ToggleButton.MouseEnter">
                 <BeginStoryboard>
                     <Storyboard>
-                        <ColorAnimation Storyboard.TargetProperty="(Button.Background).(SolidColorBrush.Color)" 
-                                         To="Red"
+                        <DoubleAnimation Storyboard.TargetProperty="(UIElement.RenderTransform).(ScaleTransform.ScaleX)"
+                                         From="1"
+                                         To="1.1"
+                                         Duration="0:0:0.2"
+                                         FillBehavior="HoldEnd"/>
+                        <DoubleAnimation Storyboard.TargetProperty="(UIElement.RenderTransform).(ScaleTransform.ScaleY)"
+                                         From="1"
+                                         To="1.1"
+                                         Duration="0:0:0.2"
+                                         FillBehavior="HoldEnd"/>
+                    </Storyboard>
+                </BeginStoryboard>
+            </EventTrigger>
+            <EventTrigger RoutedEvent="ToggleButton.MouseLeave">
+                <BeginStoryboard>
+                    <Storyboard>
+                        <DoubleAnimation Storyboard.TargetProperty="(UIElement.RenderTransform).(ScaleTransform.ScaleX)"
+                                         From="1.1"
+                                         To="1"
+                                         Duration="0:0:0.2"
+                                         FillBehavior="HoldEnd"/>
+                        <DoubleAnimation Storyboard.TargetProperty="(UIElement.RenderTransform).(ScaleTransform.ScaleY)"
+                                         From="1.1"
+                                         To="1"
+                                         Duration="0:0:0.2"
+                                         FillBehavior="HoldEnd"/>
+                    </Storyboard>
+                </BeginStoryboard>
+            </EventTrigger>
+            <!--<EventTrigger RoutedEvent="ToggleButton.MouseEnter">
+                <BeginStoryboard>
+                    <Storyboard>
+                        <ColorAnimation Storyboard.TargetProperty="(ToggleButton.Background).(SolidColorBrush.Color)" 
+                                         To="#010223"
                                          Duration="0:0:0.5"
                                          FillBehavior="Stop"/>
                     </Storyboard>
@@ -29,13 +67,13 @@
             <EventTrigger RoutedEvent="ToggleButton.MouseLeave">
                 <BeginStoryboard>
                     <Storyboard>
-                        <ColorAnimation Storyboard.TargetProperty="(Button.Background).(SolidColorBrush.Color)"
+                        <ColorAnimation Storyboard.TargetProperty="(ToggleButton.Background).(SolidColorBrush.Color)"
                                          To="Transparent"
                                          Duration="0:0:0.5"
                                          FillBehavior="Stop"/>
                     </Storyboard>
                 </BeginStoryboard>
-            </EventTrigger>
+            </EventTrigger>-->
         </Style.Triggers>
     </Style>
     
