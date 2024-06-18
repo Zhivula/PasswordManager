@@ -7,21 +7,21 @@
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              mc:Ignorable="d" 
              d:DesignHeight="800" d:DesignWidth="1000">
-    <ListView ScrollViewer.CanContentScroll="True" ItemsSource="{Binding Cards, UpdateSourceTrigger=PropertyChanged}" Background="Red" BorderThickness="0" Margin="0 5 0 0">
-        <ListView.ItemTemplate>
+    <ListBox ScrollViewer.CanContentScroll="True" ItemsSource="{Binding Cards, UpdateSourceTrigger=PropertyChanged}" Background="Transparent" BorderThickness="0" Margin="0 5 0 0">
+        <ListBox.ItemTemplate>
             <DataTemplate>
 
             </DataTemplate>
-        </ListView.ItemTemplate>
-        <ListView.ItemContainerStyle>
+        </ListBox.ItemTemplate>
+        <ListBox.ItemContainerStyle>
             <Style TargetType="ListBoxItem">
-                <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                <!--<Setter Property="HorizontalContentAlignment" Value="Left"/>-->
                 <Setter Property="Margin" Value="10"/>
                 <Setter Property="Template">
                     <Setter.Value>
-                        <ControlTemplate TargetType="{x:Type ListViewItem}">
-                            <StackPanel x:Name="panel" Orientation="Horizontal">
-                                <Border Height="200" Width="350" CornerRadius="25" BorderBrush="Transparent" BorderThickness="0">
+                        <ControlTemplate TargetType="{x:Type ListBoxItem}">
+                            <Border x:Name="panel">
+                                <Border Height="200" Width="330" CornerRadius="25" BorderBrush="Transparent" BorderThickness="0">
                                     <Border.Background>
                                         <LinearGradientBrush>
                                             <GradientStopCollection>
@@ -91,7 +91,7 @@
                                         </Grid>
                                     </Grid>
                                 </Border>
-                            </StackPanel>
+                            </Border>
                             <ControlTemplate.Triggers>
                                 <Trigger Property="IsMouseOver" Value="True">
                                     <Setter TargetName="panel" Property="Background" Value="Transparent"/>
@@ -101,6 +101,6 @@
                     </Setter.Value>
                 </Setter>
             </Style>
-        </ListView.ItemContainerStyle>
-    </ListView>
+        </ListBox.ItemContainerStyle>
+    </ListBox>
 </UserControl>
