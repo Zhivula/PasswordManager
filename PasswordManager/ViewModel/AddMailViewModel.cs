@@ -11,7 +11,7 @@ using System.Windows.Input;
 
 namespace PasswordManager.ViewModel
 {
-    class AddRecordViewModel : INotifyPropertyChanged
+    class AddMailViewModel : INotifyPropertyChanged
     {
         private string title;
         public string Title
@@ -21,16 +21,6 @@ namespace PasswordManager.ViewModel
             {
                 title = value;
                 OnPropertyChanged(nameof(Title));
-            }
-        }
-        private string login;
-        public string Login
-        {
-            get => login;
-            set
-            {
-                login = value;
-                OnPropertyChanged(nameof(Login));
             }
         }
         private string password;
@@ -49,7 +39,7 @@ namespace PasswordManager.ViewModel
             get => masterPassword;
             set
             {
-                masterPassword = value; 
+                masterPassword = value;
                 OnPropertyChanged(nameof(MasterPassword));
             }
         }
@@ -63,57 +53,30 @@ namespace PasswordManager.ViewModel
                 OnPropertyChanged(nameof(Comment));
             }
         }
-        private List<string> logins;
-        public List<string> Logins
-        {
-            get => logins;
-            set
-            {
-                logins = value;
-                OnPropertyChanged(nameof(Logins));
-            }
-        }
-        private string selectedItem;
-        public string SelectedItem
-        {
-            get => selectedItem;
-            set
-            {
-                selectedItem = value;
-                OnPropertyChanged(nameof(SelectedItem));
-                SelectedItemChanged(value);
-            }
-        }
 
         readonly MainWindow window = Application.Current.Windows.OfType<MainWindow>().FirstOrDefault();
-        readonly AddRecordModel model = new AddRecordModel();
+        readonly AddMailModel model = new AddMailModel();
 
-        public AddRecordViewModel()
+        public AddMailViewModel()
         {
-            Logins = model.GetLogins();
-        }
 
-        private void SelectedItemChanged(string item)
-        {
-            Login = item;
         }
-
         public ICommand Save => new DelegateCommand(o =>
         {
-            if (!string.IsNullOrWhiteSpace(Password) || !string.IsNullOrWhiteSpace(MasterPassword) || !string.IsNullOrWhiteSpace(Title) || !string.IsNullOrWhiteSpace(Login))
+            if (!string.IsNullOrWhiteSpace(Password) || !string.IsNullOrWhiteSpace(MasterPassword) || !string.IsNullOrWhiteSpace(Title))
             {
-                model.AddRecord(Title, Login, Password, MasterPassword, Comment);
-                Password = MasterPassword = Title = Login = Comment = string.Empty;
+                model.AddMail(Title, Password, MasterPassword, Comment);
+                Password = MasterPassword = Title = Comment = string.Empty;
                 WindowSuccessfullyViewModel.Successfully();
             }
         });
 
         #region PropertyChanged
         public event PropertyChangedEventHandler PropertyChanged;
-            private void OnPropertyChanged(string name)
-            {
-                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
-            }
+        private void OnPropertyChanged(string name)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
+        }
         #endregion      
     }
 }

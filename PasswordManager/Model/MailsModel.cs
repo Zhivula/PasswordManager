@@ -13,14 +13,14 @@ namespace PasswordManager.Model
         {
 
         }
-        public List<Account> GetAccounts()
+        public List<Mail> GetMails()
         {
-            var ListMainPage = new List<Account>();
+            var ListMainPage = new List<Mail>();
             using (var context = new MyDbContext())
             {
-                if (context.Accounts.Count() > 0)
+                if (context.Mails.Count() > 0)
                 {
-                    foreach (var item in context.Accounts)
+                    foreach (var item in context.Mails)
                     {
                         ListMainPage.Add(item);
                     }

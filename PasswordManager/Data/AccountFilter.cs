@@ -108,6 +108,7 @@ namespace PasswordManager.Data
         private string oldTitle;
         private string oldLogin;
         private string oldPassword;
+        private string masterPassword;
 
         private SolidColorBrush background;
         public SolidColorBrush Background
@@ -164,8 +165,9 @@ namespace PasswordManager.Data
         public DelegateCommand ChangeCommand { get; set; }
         public DelegateCommand SaveCommand { get; set; }
 
-        public AccountFilter()
+        public AccountFilter(string MasterPassword)
         {
+            masterPassword = MasterPassword;
             ClickVision = false;
             ClickChange = true;
             clickSave = false;
@@ -249,7 +251,7 @@ namespace PasswordManager.Data
             {
                 using (var context = new MyDbContext())
                 {
-                    context.Accounts.Where(x => x.Id == Id).FirstOrDefault().Password = RijndaelManagedEncryption.EncryptText(Password, "12345678");
+                    context.Accounts.Where(x => x.Id == Id).FirstOrDefault().Password = RijndaelManagedEncryption.EncryptText(Password, masterPassword);
                     context.SaveChanges();
                 }
             }

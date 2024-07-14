@@ -12,14 +12,14 @@ namespace PasswordManager.ViewModel
 {
     class MailsViewModel
     {
-        private ObservableCollection<AccountFilter> accounts;
-        public ObservableCollection<AccountFilter> Accounts
+        private ObservableCollection<MailFilter> mails;
+        public ObservableCollection<MailFilter> Mails
         {
-            get => accounts;
+            get => mails;
             set
             {
-                accounts = value;
-                OnPropertyChanged(nameof(Accounts));
+                mails = value;
+                OnPropertyChanged(nameof(Mails));
             }
         }
 
@@ -27,21 +27,20 @@ namespace PasswordManager.ViewModel
 
         public MailsViewModel(string MasterPassword)
         {
-            Accounts = new ObservableCollection<AccountFilter>();
-            var modelaccounts = model.GetAccounts();
-            if (modelaccounts.Count() > 0)
+            Mails = new ObservableCollection<MailFilter>();
+            var modelmails = model.GetMails();
+            if (modelmails.Count() > 0)
             {
-                foreach (var i in modelaccounts)
+                foreach (var i in modelmails)
                 {
                     var password = RijndaelManagedEncryption.DecryptText(i.Password, MasterPassword);
 
-                    Accounts.Add(new AccountFilter
+                    Mails.Add(new MailFilter
                     {
                         Password = password,
                         PasswordTrue = password,
                         Id = i.Id,
                         Comment = i.Comment,
-                        Login = i.Login,
                         Title = i.Title
                     });
                 }

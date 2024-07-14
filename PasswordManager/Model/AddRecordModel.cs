@@ -36,5 +36,16 @@ namespace PasswordManager.Model
             }
 
         }
+        public List<string> GetLogins()
+        {
+            using (var context = new MyDbContext())
+            {
+                if (context.Accounts.Count() > 0)
+                {
+                    return context.Accounts.Select(x => x.Login).Distinct().ToList();
+                }
+                else return null; 
+            }
+        }
     }
 }

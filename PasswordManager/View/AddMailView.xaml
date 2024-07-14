@@ -1,0 +1,81 @@
+﻿<UserControl x:Class="PasswordManager.View.AddMailView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:PasswordManager.View"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <StackPanel Margin="20 0 20 5">
+        <StackPanel Margin="0">
+            <!--<StackPanel.RenderTransform>
+                <TranslateTransform X="0" Y="0"/>
+            </StackPanel.RenderTransform>-->
+            <Label Content="Title" Foreground="{DynamicResource LightBrightTurquoiseBrush}"/>
+            <TextBox Text="{Binding Title, UpdateSourceTrigger=PropertyChanged}" FontSize="16" Padding="3 0 0 0" Height="26" Foreground="White">
+                <TextBox.Template>
+                    <ControlTemplate>
+                        <Border CornerRadius="5"  BorderThickness="1" BorderBrush="#FF468AFF" Background="Transparent">
+                            <ScrollViewer Margin="0" x:Name="PART_ContentHost" />
+                        </Border>
+                    </ControlTemplate>
+                </TextBox.Template>
+            </TextBox>
+        </StackPanel>
+        <StackPanel Margin="0 18 0 0">
+            <!--<StackPanel.RenderTransform>
+                <TranslateTransform X="0" Y="0"/>
+            </StackPanel.RenderTransform>-->
+            <Label Content="Password" Foreground="{DynamicResource LightBrightTurquoiseBrush}"/>
+            <TextBox Text="{Binding Password, UpdateSourceTrigger=PropertyChanged}" FontSize="16" Padding="3 0 0 0" Height="26" Foreground="White">
+                <TextBox.Template>
+                    <ControlTemplate>
+                        <Border CornerRadius="5"  BorderThickness="1" BorderBrush="#FF468AFF" Background="Transparent">
+                            <ScrollViewer Margin="0" x:Name="PART_ContentHost" />
+                        </Border>
+                    </ControlTemplate>
+                </TextBox.Template>
+            </TextBox>
+        </StackPanel>
+        <StackPanel Margin="0 18 0 0">
+            <!--<StackPanel.RenderTransform>
+                <TranslateTransform X="0" Y="0"/>
+            </StackPanel.RenderTransform>-->
+            <Label Content="Master Password" Foreground="{DynamicResource LightBrightTurquoiseBrush}"/>
+            <TextBox Text="{Binding MasterPassword, UpdateSourceTrigger=PropertyChanged}" FontSize="16" Padding="3 0 0 0" Height="26" Foreground="White">
+                <TextBox.Template>
+                    <ControlTemplate>
+                        <Border CornerRadius="5"  BorderThickness="1" BorderBrush="#FF468AFF" Background="Transparent">
+                            <ScrollViewer Margin="0" x:Name="PART_ContentHost" />
+                        </Border>
+                    </ControlTemplate>
+                </TextBox.Template>
+            </TextBox>
+        </StackPanel>
+        <StackPanel Margin="0 18 0 0">
+            <!--<StackPanel.RenderTransform>
+                <TranslateTransform X="0" Y="0"/>
+            </StackPanel.RenderTransform>-->
+            <Label Content="Comment" Foreground="{DynamicResource LightBrightTurquoiseBrush}"/>
+            <TextBox Text="{Binding Comment, UpdateSourceTrigger=PropertyChanged}" FontSize="16" Padding="3 0 0 0" Height="75" Foreground="White">
+                <TextBox.Template>
+                    <ControlTemplate>
+                        <Border CornerRadius="5"  BorderThickness="1" BorderBrush="#FF468AFF" Background="Transparent">
+                            <ScrollViewer Margin="0" x:Name="PART_ContentHost" />
+                        </Border>
+                    </ControlTemplate>
+                </TextBox.Template>
+            </TextBox>
+        </StackPanel>
+        <Button Margin="0 18 0 0" Width="150" Style="{DynamicResource ADD_Button}" Command="{Binding Save}">
+            <!--<Button.RenderTransform>
+                <TranslateTransform X="0" Y="30"/>
+            </Button.RenderTransform>-->
+            <StackPanel Orientation="Horizontal">
+                <materialDesign:PackIcon Kind="ContentSave" Foreground="White" Height="25" Width="25"/>
+                <TextBlock Text="Save" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="White" FontWeight="Bold" FontSize="16"/>
+            </StackPanel>
+        </Button>
+    </StackPanel>
+</UserControl>

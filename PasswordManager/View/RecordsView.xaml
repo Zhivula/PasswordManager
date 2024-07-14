@@ -14,11 +14,24 @@
                     <!--MouseRightButtonDown="ListBoxItemPageViewCommand"-->
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="5*"/>
-                        <ColumnDefinition Width="9*"/>
+                        <ColumnDefinition Width="7*"/>
                         <ColumnDefinition Width="100"/>
                     </Grid.ColumnDefinitions>
-                    <Grid Grid.Column="0">
-                        <TextBox Text="{Binding Path=Title}" Style="{DynamicResource RecordsText}">
+                    <Grid Grid.Column="0" Margin="0 0 20 0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <TextBox Grid.Row="0" Text="{Binding Path=Title}" Style="{DynamicResource RecordsText}" Margin="0 0 0 5">
+                            <TextBox.Template>
+                                <ControlTemplate>
+                                    <Border CornerRadius="5"  BorderThickness="0" BorderBrush="#FF468AFF" Background="{Binding Path=Background}">
+                                        <ScrollViewer Margin="0" x:Name="PART_ContentHost" />
+                                    </Border>
+                                </ControlTemplate>
+                            </TextBox.Template>
+                        </TextBox>
+                        <TextBox Grid.Row="1" Text="{Binding Path=Comment}" Style="{DynamicResource RecordsText_Small}">
                             <TextBox.Template>
                                 <ControlTemplate>
                                     <Border CornerRadius="5"  BorderThickness="0" BorderBrush="#FF468AFF" Background="{Binding Path=Background}">

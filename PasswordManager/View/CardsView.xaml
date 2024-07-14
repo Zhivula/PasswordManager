@@ -7,7 +7,90 @@
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              mc:Ignorable="d" 
              d:DesignHeight="800" d:DesignWidth="1000">
-    <ListBox ScrollViewer.CanContentScroll="True" ItemsSource="{Binding Cards, UpdateSourceTrigger=PropertyChanged}" Background="Transparent" BorderThickness="0" Margin="0 5 0 0">
+    <ItemsControl ItemsSource="{Binding Cards, UpdateSourceTrigger=PropertyChanged}" Margin="10 10 0 0">
+        <ItemsControl.ItemsPanel>
+            <ItemsPanelTemplate>
+                <WrapPanel />
+            </ItemsPanelTemplate>
+        </ItemsControl.ItemsPanel>
+        <ItemsControl.ItemTemplate>
+            <DataTemplate>
+                <Border>
+                    <Border Height="200" Width="330" CornerRadius="25" BorderBrush="Transparent" BorderThickness="0">
+                        <Border.Background>
+                            <LinearGradientBrush>
+                                <GradientStopCollection>
+                                    <GradientStop Offset="0" Color="{DynamicResource DarkBaseColor}"></GradientStop>
+                                    <GradientStop Offset="1" Color="{DynamicResource DarkTextColor}"></GradientStop>
+                                </GradientStopCollection>
+                            </LinearGradientBrush>
+                        </Border.Background>
+                        <Border.Style>
+                            <Style TargetType="Border">
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="BorderBrush" Value="LightBlue" />
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Border.Style>
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="50*"/>
+                                <RowDefinition Height="150*"/>
+                            </Grid.RowDefinitions>
+                            <Grid Grid.Row="0">
+                                <TextBox Text="{Binding Path=Bank}" Style="{DynamicResource CardText}"/>
+                                <Button Style="{DynamicResource VisionPassword}" HorizontalAlignment="Left" Command="{Binding VisionCommand}" Margin="10 0 0 0">
+                                    <Button.RenderTransform>
+                                        <ScaleTransform ScaleX="1" ScaleY="1" CenterX="20" CenterY="20"/>
+                                    </Button.RenderTransform>
+                                    <materialDesign:PackIcon Kind="Eye" Foreground="White" Height="20" Width="20"/>
+                                </Button>
+                                <Button Style="{DynamicResource VisionPassword}" Command="{Binding CloseCommand}" Margin="0 0 10 0">
+                                    <Button.RenderTransform>
+                                        <ScaleTransform ScaleX="1" ScaleY="1" CenterX="20" CenterY="20"/>
+                                    </Button.RenderTransform>
+                                    <materialDesign:PackIcon Kind="Close" Foreground="White" Height="20" Width="20"/>
+                                </Button>
+                            </Grid>
+                            <Grid Grid.Row="1" Margin="30 20 30 20">
+                                <TextBox Text="{Binding Path=Number}" Style="{DynamicResource CardNumberText}" VerticalAlignment="Top">
+                                    <TextBox.Template>
+                                        <ControlTemplate>
+                                            <Border CornerRadius="15"  BorderThickness="0">
+                                                <ScrollViewer Margin="0" x:Name="PART_ContentHost" />
+                                            </Border>
+                                        </ControlTemplate>
+                                    </TextBox.Template>
+                                </TextBox>
+
+                                <TextBox Text="{Binding Path=Date}" Style="{DynamicResource CardNumberText}" FontSize="16" HorizontalAlignment="Left" VerticalAlignment="Center">
+                                    <TextBox.Template>
+                                        <ControlTemplate>
+                                            <Border CornerRadius="15"  BorderThickness="0">
+                                                <ScrollViewer Margin="0" x:Name="PART_ContentHost" />
+                                            </Border>
+                                        </ControlTemplate>
+                                    </TextBox.Template>
+                                </TextBox>
+                                <TextBox Text="{Binding Path=Name}" Style="{DynamicResource CardNumberText}" Foreground="White" FontSize="16" HorizontalAlignment="Left" VerticalAlignment="Bottom">
+                                    <TextBox.Template>
+                                        <ControlTemplate>
+                                            <Border CornerRadius="15"  BorderThickness="0">
+                                                <ScrollViewer Margin="0" x:Name="PART_ContentHost" />
+                                            </Border>
+                                        </ControlTemplate>
+                                    </TextBox.Template>
+                                </TextBox>
+                            </Grid>
+                        </Grid>
+                    </Border>
+                </Border>
+            </DataTemplate>
+        </ItemsControl.ItemTemplate>
+    </ItemsControl>
+    <!--<ListBox ScrollViewer.CanContentScroll="True" ItemsSource="{Binding Cards, UpdateSourceTrigger=PropertyChanged}" Background="Transparent" BorderThickness="0" Margin="0 5 0 0">
         <ListBox.ItemTemplate>
             <DataTemplate>
 
@@ -15,7 +98,7 @@
         </ListBox.ItemTemplate>
         <ListBox.ItemContainerStyle>
             <Style TargetType="ListBoxItem">
-                <!--<Setter Property="HorizontalContentAlignment" Value="Left"/>-->
+                --><!--<Setter Property="HorizontalContentAlignment" Value="Left"/>--><!--
                 <Setter Property="Margin" Value="10"/>
                 <Setter Property="Template">
                     <Setter.Value>
@@ -102,5 +185,5 @@
                 </Setter>
             </Style>
         </ListBox.ItemContainerStyle>
-    </ListBox>
+    </ListBox>-->
 </UserControl>

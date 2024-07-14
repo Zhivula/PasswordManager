@@ -44,14 +44,14 @@ namespace PasswordManager.Data
             SymmetricAlgorithm sa = Aes.Create();
             using (SHA512 sha512 = SHA512.Create())
             {
-                byte[] IV = new byte[sha512.ComputeHash(Encoding.UTF8.GetBytes("12345678")).Length / 4];
+                byte[] IV = new byte[sha512.ComputeHash(Encoding.UTF8.GetBytes(password)).Length / 4];
                 for (var i = 0; i < IV.Length; i++)
                 {
-                    IV[i] = sha512.ComputeHash(Encoding.UTF8.GetBytes("12345678"))[i];
+                    IV[i] = sha512.ComputeHash(Encoding.UTF8.GetBytes(password))[i];
                 }
                 sa.IV = IV;
             }
-            Rfc2898DeriveBytes hasher = new Rfc2898DeriveBytes("12345678", sa.IV, 1000);
+            Rfc2898DeriveBytes hasher = new Rfc2898DeriveBytes(password, sa.IV, 1000);
             sa.Key = hasher.GetBytes(32);
 
             var decryptor = sa.CreateDecryptor(sa.Key, sa.IV);

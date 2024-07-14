@@ -37,7 +37,7 @@ namespace PasswordManager.ViewModel
                 {
                     var password = RijndaelManagedEncryption.DecryptText(i.Password, MasterPassword);
 
-                    Accounts.Add(new AccountFilter {
+                    Accounts.Add(new AccountFilter(MasterPassword) {
                         Password = password,
                         PasswordTrue = password,
                         Id = i.Id,

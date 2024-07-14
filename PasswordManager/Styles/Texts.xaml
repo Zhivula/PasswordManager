@@ -14,7 +14,7 @@
 
     <Style x:Key="RecordsText" TargetType="{x:Type TextBox}">
         <Setter Property="FontFamily" Value="{DynamicResource BaseFont}"/>
-        <Setter Property="FontSize" Value="{DynamicResource Regular}"/>
+        <Setter Property="FontSize" Value="{DynamicResource Big}"/>
         <Setter Property="FontWeight" Value="Light"/>
         <Setter Property="Foreground" Value="{Binding Path=Foreground}"/>
         <Setter Property="HorizontalAlignment" Value="Left"/>
@@ -26,7 +26,22 @@
         <Setter Property="IsReadOnly" Value="{Binding Path=IsReadOnly}"/>
         <Setter Property="Padding" Value="3 2 3 2"/>
     </Style>
-    
+    <Style x:Key="RecordsText_Small" TargetType="{x:Type TextBox}">
+        <Setter Property="FontFamily" Value="{DynamicResource BaseFont}"/>
+        <Setter Property="FontSize" Value="{DynamicResource Small}"/>
+        <Setter Property="FontWeight" Value="Light"/>
+        <Setter Property="Foreground" Value="{Binding Path=Foreground}"/>
+        <Setter Property="HorizontalAlignment" Value="Left"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="Background" Value="{Binding Path=Background}"/>
+        <Setter Property="BorderThickness" Value="0 0 0 0"/>
+        <Setter Property="IsEnabled" Value="True"/>
+        <Setter Property="TextAlignment" Value="Left"/>
+        <Setter Property="IsReadOnly" Value="{Binding Path=IsReadOnly}"/>
+        <Setter Property="Padding" Value="3 2 3 2"/>
+        <Setter Property="TextWrapping" Value="Wrap"/>
+    </Style>
+
     <Style x:Key="CardText" TargetType="{x:Type TextBox}">
         <Setter Property="FontFamily" Value="{DynamicResource CardTitleFont}"/>
         <Setter Property="FontSize" Value="{DynamicResource H1}"/>
